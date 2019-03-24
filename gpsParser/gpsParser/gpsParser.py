@@ -15,7 +15,7 @@ gpsd.connect(host=device)
 print("Parsing GPS information...")
 
 while True:
-    # Opens the modifier.txt (The path is relative so make sure the script and the modifier are in the same directory
+    # Opens the modifier.txt
     f = open("modifier.txt")
     modx = f.read()
     mod = int(modx)
@@ -26,6 +26,7 @@ while True:
     # Output for debugging
     print("This is my latitude", gpsLocation.lat)
     print("This is my longitude", gpsLocation.lon)
+
     # Gets time in local time must have True passed in the method
     print("This is my time", gpsLocation.get_time(True))
 
@@ -44,7 +45,7 @@ while True:
     dlon = lon2 - lon1
     dlat = lat2 - lat1
 
-    # Using Haversine formula to calculates the distance between the two points and prints in km
+    # Using the Haversine formula to calculates the distance between the two points and prints in km
     a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2
     c = 2 * atan2(sqrt(a), sqrt(1 - a))
 
